@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+td {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+}
+
+.cell-button {
+    width: 100%;
+    height: 100%;
+    font-size: 24px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.cell-button:disabled {
+    background-color: lightgray;
+    cursor: not-allowed;
+}
+
+.cell-button:hover:not(:disabled) {
+    background-color: lightgray;
+}
+
+p {
+    text-align: center;
+    font-size: 18px;
+    color: red;
+}
+
+.reset-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}

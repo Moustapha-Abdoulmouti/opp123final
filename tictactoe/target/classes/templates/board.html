@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<h1>Tic-Tac-Toe</h1>
+<p th:text="${message}"></p>
+<table border="1">
+    <tr th:each="row, rowStat : ${board}">
+        <td th:each="cell, colStat : ${row}">
+            <form th:action="@{/tictactoe/move}" method="post">
+                <input type="hidden" name="box" th:value="${rowStat.index * 3 + colStat.index + 1}"/>
+                <button type="submit" th:text="${cell != ' ' ? cell : rowStat.index * 3 + colStat.index + 1}" class="cell-button" th:disabled="${cell != ' '}"></button>
+            </form>
+        </td>
+    </tr>
+</table>
+<p>X Wins: <span th:text="${xWins}"></span></p>
+<p>O Wins: <span th:text="${oWins}"></span></p>
+<form th:action="@{/tictactoe/reset}" method="post">
+    <button type="submit" class="reset-button">Play Again</button>
+</form>
+<h2>Manual Input</h2>
+<form th:action="@{/tictactoe/moveByInput}" method="post">
+    <label for="box">Enter box number (1-9) for current player:</label>
+    <input type="number" id="box" name="box" min="1" max="9" required>
+    <button type="submit">Submit Move</button>
+</form>
+</body>
+</html>
